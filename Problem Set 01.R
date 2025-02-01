@@ -49,7 +49,7 @@ typeof(c(TRUE, 8))
 # by converting the logical TRUE into the numeric 1
 
 # 2. I expect to get a character vector, because the first value is a character
-typeof(c(TRUE, 8))
+typeof(c("TRUE", FALSE))
 # Yes, I got a character. R cannot represent a character value and a logical value in the same
 # atomic vector, so R "compromises"and converts the logical FALSE into the character "FALSE"
 
