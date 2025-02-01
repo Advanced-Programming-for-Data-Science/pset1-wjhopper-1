@@ -42,6 +42,30 @@ list(
 # 4. c(4, "4", factor("Four"))
 # 5. c(list("Ten"), 20)
 
+# 1. I expect to get a logical
+typeof(c(TRUE, 8))
+# But I got a double. This makes sense in retrospect because R cannot represent a logical value and
+# a numeric value in the same atomic vector, so R finds "common ground" between the two data types
+# by converting the logical TRUE into the numeric 1
+
+# 2. I expect to get a character vector, because the first value is a character
+typeof(c(TRUE, 8))
+# Yes, I got a character. R cannot represent a character value and a logical value in the same
+# atomic vector, so R "compromises"and converts the logical FALSE into the character "FALSE"
+
+# 3. I expect to get a character vector because the values are all letters
+typeof(c(F, F, F, T))
+# But I got a logical and I don't know why
+
+# 4. I expect to get a character vector, because it contains the word "Four"
+typeof(c(4, "4", factor("Four")))
+# Yes, I got a character vector.
+
+# 5. I expect to get a character vector, because it contains the word "Ten"
+typeof(c(list("Ten"), 20))
+# I was wrong, I got a list. I seems that if one object inside the `c()` function is a list, it will
+# return a list.
+
 #### Exercise 3 ####
 
 # Can this list be transformed in a data frame object using `as.data.frame()`?
@@ -52,3 +76,7 @@ list(
 #  $ z: logi [1:8] TRUE TRUE TRUE TRUE TRUE FALSE ...
 
 # Give a detailed explanation of why or why not.
+
+# This list cannot become a data frame because the three elements of the list each have different
+# lengths. To make a data frame, all the elements must have a common length.
+
