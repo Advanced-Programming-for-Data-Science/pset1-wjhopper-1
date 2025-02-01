@@ -23,6 +23,13 @@
 # Be sure to pay special attention to representing the course meeting schedules, as some courses
 # have more than 1 meeting time.
 
+list(
+  course = c("SDS 100", "SDS 220", "MTH 111", "GOV 207"),
+  schedule = c("Tu 2:45 pm", "M 3:05 pm, WF 2:45 pm",  "WMF 9:25 am", "TuTh 9:25 am"),
+  credits = c(1, 4, 4, 4),
+  SU_eligible = c(TRUE, FALSE, FALSE, TRUE)
+)
+
 #### Exercise 2 ####
 
 # For each command below, predict what type of vector you think will be returned. Then, check your  
