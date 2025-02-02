@@ -32,7 +32,7 @@ list(
 
 #### Exercise 2 ####
 
-# For each command below, predict what type of vector you think will be returned. Then, check your  
+# For each command below, predict what type of vector you think will be returned. Then, check your
 # intuitions by running each command in the R console. Were you right? And, can you explain the
 # reasons for the results you got?
 
@@ -79,4 +79,3 @@ typeof(c(list("Ten"), 20))
 
 # This list cannot become a data frame because the three elements of the list each have different
 # lengths. To make a data frame, all the elements must have a common length.
-
