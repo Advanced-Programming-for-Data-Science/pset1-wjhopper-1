@@ -23,20 +23,23 @@
 # Be sure to pay special attention to representing the course meeting schedules, as some courses
 # have more than 1 meeting time.
 
-#### Instructor Solution ####
-
-schedule <- data.frame(
+list(
   course = c("SDS 100", "SDS 220", "MTH 111", "GOV 207"),
-  schedule = I(list("Tu 2:45 pm", c("M 3:05 pm, WF 2:45 pm"),  "WMF 9:25 am", "TuTh 9:25 am")),
+  schedule = c("Tu 2:45 pm", "M 3:05 pm, WF 2:45 pm",  "WMF 9:25 am", "TuTh 9:25 am"),
   credits = c(1, 4, 4, 4),
   SU_eligible = c(TRUE, FALSE, FALSE, TRUE)
 )
 
+#### Instructor Solution ####
+
+schedule <- data.frame(
+  course = c("SDS 100", "SDS 220", "MTH 111", "GOV 207"),
+  schedule = I(list("Tu 2:45 pm", c("M 3:05 pm, WF 2:45 pm"),  "WMF 9:25 am", "TuTh 9:25 am"))
 schedule
 
 #### Exercise 2 ####
 
-# For each command below, predict what type of vector you think will be returned. Then, check your  
+# For each command below, predict what type of vector you think will be returned. Then, check your
 # intuitions by running each command in the R console. Were you right? And, can you explain the
 # reasons for the results you got?
 
@@ -45,6 +48,30 @@ schedule
 # 3. c(F, F, F, T)
 # 4. c(4, "4", factor("Four"))
 # 5. c(list("Ten"), 20)
+
+# 1. I expect to get a logical
+typeof(c(TRUE, 8))
+# But I got a double. This makes sense in retrospect because R cannot represent a logical value and
+# a numeric value in the same atomic vector, so R finds "common ground" between the two data types
+# by converting the logical TRUE into the numeric 1
+
+# 2. I expect to get a character vector, because the first value is a character
+typeof(c("TRUE", FALSE))
+# Yes, I got a character. R cannot represent a character value and a logical value in the same
+# atomic vector, so R "compromises"and converts the logical FALSE into the character "FALSE"
+
+# 3. I expect to get a character vector because the values are all letters
+typeof(c(F, F, F, T))
+# But I got a logical and I don't know why
+
+# 4. I expect to get a character vector, because it contains the word "Four"
+typeof(c(4, "4", factor("Four")))
+# Yes, I got a character vector.
+
+# 5. I expect to get a character vector, because it contains the word "Ten"
+typeof(c(list("Ten"), 20))
+# I was wrong, I got a list. I seems that if one object inside the `c()` function is a list, it will
+# return a list.
 
 #### Instructor Solution ####
 
@@ -126,6 +153,9 @@ typeof(x)
 
 # Give a detailed explanation of why or why not.
 
+# This list cannot become a data frame because the three elements of the list each have different
+# lengths. To make a data frame, all the elements must have a common length.
+  
 #### Instructor Solutions ####
 
 # This list cannot become a data frame for two reasons. 
